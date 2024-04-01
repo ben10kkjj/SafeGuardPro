@@ -169,17 +169,13 @@
 
             <Button
                 android:id="@+id/button"
-                EPIS
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#004AAD"
                 android:text="EDITAR EPIS"
-                tools:layout_editor_absoluteX="110dp"
-
-
-                tools:layout_editor_absoluteY="490dp""
-                tools:layout_editor_absoluteX="53dp"
-                tools:layout_editor_absoluteY="490dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="554dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
