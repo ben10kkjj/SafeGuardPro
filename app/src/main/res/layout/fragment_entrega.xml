@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.EntregaFragment">
+
+\
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="416dp"
+        android:layout_height="138dp"
+        android:background="#004AAD"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        tools:layout_editor_absoluteX="-3dp"
+        tools:layout_editor_absoluteY="-1dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="263dp"
+        android:layout_height="137dp"
+        android:src="@drawable/logo_constru__o_e_reparos"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="#FFCB03"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar3"
+        tools:layout_editor_absoluteX="20dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="28dp"
+            tools:layout_editor_absoluteY="228dp">
+
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="369dp"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="70dp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ENTREGA"
+                android:textSize="20dp"
+                android:textStyle="italic|bold"
+                tools:layout_editor_absoluteX="134dp"
+                tools:layout_editor_absoluteY="35dp" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#004AAD"
+                android:text="ENVIAR"
+                android:textSize="20dp"
+                tools:layout_editor_absoluteX="134dp"
+                tools:layout_editor_absoluteY="391dp" />
+
+            <EditText
+                android:id="@+id/editTextNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:text="CPF"
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="138dp" />
+
+            <EditText
+                android:id="@+id/editTextText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:text="EPI"
+                tools:layout_editor_absoluteX="24dp"
+                tools:layout_editor_absoluteY="251dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
