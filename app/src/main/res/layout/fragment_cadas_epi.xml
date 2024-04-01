@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.LoginFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="146dp"
+        android:background="#004AAD"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        />
+
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="395dp"
+        android:layout_height="139dp"
+        android:src="@drawable/logo_constru__o_e_reparos"
+        tools:layout_editor_absoluteX="-6dp"
+        tools:layout_editor_absoluteY="6dp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="172dp"
+        app:cardBackgroundColor="#FFCB03"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="20dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="367dp"
+            android:layout_height="565dp">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="195dp"
+                android:layout_height="73dp"
+                android:backgroundTint="#004AAD"
+                android:text="Cadastrar"
+                android:textSize="30dp"
+                tools:layout_editor_absoluteX="90dp"
+                tools:layout_editor_absoluteY="457dp" />
+
+            <EditText
+                android:id="@+id/editTextText"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:background="#FFE235"
+                android:ems="10"
+                android:inputType="text"
+                android:text="Digite o nome da EPI:"
+                android:textColor="#836666"
+                tools:layout_editor_absoluteX="26dp"
+                tools:layout_editor_absoluteY="146dp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="61dp"
+                android:layout_height="83dp"
+                android:src="@drawable/person"
+                tools:layout_editor_absoluteX="147dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <EditText
+                android:id="@+id/editTextNumber"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:background="#FFE235"
+                android:ems="10"
+                android:hint="Digite o número CA:"
+                android:inputType="number"
+                tools:layout_editor_absoluteX="26dp"
+                tools:layout_editor_absoluteY="223dp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="306dp"
+                android:layout_height="50dp"
+                android:text="Cadastrar EPI"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="87dp" />
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:id="@+id/editTextDate"
+                android:ems="10"
+                android:inputType="date"
+                android:hint="Digite a data de validade:"
+                android:background="#FFE235"
+                tools:layout_editor_absoluteX="33dp"
+                tools:layout_editor_absoluteY="302dp" />
+
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:background="#FFE235"
+                android:ems="10"
+                android:hint="Digite a data de vencimento:"
+                android:inputType="date"
+                tools:layout_editor_absoluteX="33dp"
+                tools:layout_editor_absoluteY="385dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
