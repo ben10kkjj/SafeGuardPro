@@ -6,44 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".view.LoginFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="match_parent"
-        android:layout_height="146dp"
-        android:background="#004AAD"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="395dp"
-        android:layout_height="139dp"
-        android:src="@drawable/logo_constru__o_e_reparos"
-        tools:layout_editor_absoluteX="-6dp"
-        tools:layout_editor_absoluteY="6dp" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="20dp"
         app:cardBackgroundColor="#FFCB03"
         app:cardCornerRadius="20dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="172dp">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="367dp"
-            android:layout_height="565dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="195dp"
-                android:layout_height="73dp"
-                android:backgroundTint="#004AAD"
-                android:text="Cadastrar"
+            <ImageView
+                android:id="@+id/imagePessoaCadastro"
+                android:layout_width="61dp"
+                android:layout_height="83dp"
+                android:src="@drawable/person"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/textCadastro"
+                android:layout_width="306dp"
+                android:layout_height="50dp"
+                android:text="Cadastrar EPI"
                 android:textSize="30dp"
-                tools:layout_editor_absoluteX="90dp"
-                tools:layout_editor_absoluteY="457dp" />
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                />
+
 
             <EditText
                 android:id="@+id/edtEpi"
@@ -54,16 +47,9 @@
                 android:inputType="text"
                 android:text="Digite o nome da EPI:"
                 android:textColor="#836666"
-                tools:layout_editor_absoluteX="26dp"
-                tools:layout_editor_absoluteY="146dp" />
+                android:layout_gravity="center"/>
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="61dp"
-                android:layout_height="83dp"
-                android:src="@drawable/person"
-                tools:layout_editor_absoluteX="147dp"
-                tools:layout_editor_absoluteY="0dp" />
+
 
             <EditText
                 android:id="@+id/edtCa"
@@ -73,18 +59,10 @@
                 android:ems="10"
                 android:hint="Digite o número CA:"
                 android:inputType="number"
-                tools:layout_editor_absoluteX="26dp"
-                tools:layout_editor_absoluteY="223dp" />
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"/>
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="306dp"
-                android:layout_height="50dp"
-                android:text="Cadastrar EPI"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="34dp"
-                tools:layout_editor_absoluteY="87dp" />
+
 
             <EditText
                 android:id="@+id/edtDateValidade"
@@ -94,8 +72,8 @@
                 android:ems="10"
                 android:hint="Digite a data de validade:"
                 android:inputType="date"
-                tools:layout_editor_absoluteX="33dp"
-                tools:layout_editor_absoluteY="302dp" />
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"/>
 
             <EditText
                 android:id="@+id/edtDateVencimento"
@@ -105,10 +83,21 @@
                 android:ems="10"
                 android:hint="Digite a data de vencimento:"
                 android:inputType="date"
-                tools:layout_editor_absoluteX="33dp"
-                tools:layout_editor_absoluteY="385dp" />
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/btnCadastro"
+                android:layout_width="195dp"
+                android:layout_height="73dp"
+                android:backgroundTint="#004AAD"
+                android:text="Cadastrar"
+                android:textSize="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"/>
+
+
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

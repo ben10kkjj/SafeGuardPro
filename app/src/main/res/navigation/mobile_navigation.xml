@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/mobile_navigation">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/relatorioFuncFragment"
+        android:name="com.pira.safeguardpro.view.RelatorioFuncFragment"
+        android:label="fragment_relatorio_func"
+        tools:layout="@layout/fragment_relatorio_func" />
+    <fragment
+        android:id="@+id/notaFiscalFragment"
+        android:name="com.pira.safeguardpro.view.NotaFiscalFragment"
+        android:label="fragment_nota_fiscal"
+        tools:layout="@layout/fragment_nota_fiscal" />
+    <fragment
+        android:id="@+id/relatorioEpiFragment"
+        android:name="com.pira.safeguardpro.view.RelatorioEpiFragment"
+        android:label="fragment_relatorio_epi"
+        tools:layout="@layout/fragment_relatorio_epi" />
+    <fragment
+        android:id="@+id/menuGestorFragment"
+        android:name="com.pira.safeguardpro.view.MenuGestorFragment"
+        android:label="fragment_menu_gestor"
+        tools:layout="@layout/fragment_menu_gestor" />
+    <fragment
+        android:id="@+id/entregaFragment"
+        android:name="com.pira.safeguardpro.view.EntregaFragment"
+        android:label="fragment_entrega"
+        tools:layout="@layout/fragment_entrega" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.pira.safeguardpro.view.LoginFragment"
+        android:label="fragment_cadas_epi"
+        tools:layout="@layout/fragment_cadas_epi" />
+
 
 </navigation>

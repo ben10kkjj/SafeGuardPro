@@ -7,45 +7,40 @@
     android:layout_height="match_parent"
     tools:context=".view.LoginFragment">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="match_parent"
-        android:layout_height="146dp"
-        android:background="#004AAD"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        />
-
-
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="395dp"
-        android:layout_height="139dp"
-        android:src="@drawable/logo_constru__o_e_reparos"
-        tools:layout_editor_absoluteX="-6dp"
-        tools:layout_editor_absoluteY="6dp" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="172dp"
         app:cardBackgroundColor="#FFCB03"
         android:layout_margin="20dp"
-        app:cardCornerRadius="20dp">
+        app:cardCornerRadius="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="367dp"
-            android:layout_height="565dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/imagePessoa"
+                android:layout_width="61dp"
+                android:layout_height="83dp"
+                android:src="@drawable/person"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/textCadastrarFunc"
+                android:layout_width="306dp"
+                android:layout_height="50dp"
+                android:text="Cadastrar Funcionário"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
 
             <EditText
-                android:id="@+id/editTextTextEmailAddress3"
+                android:id="@+id/textEmail"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:background="#FFE235"
@@ -54,11 +49,11 @@
                 android:inputType="textEmailAddress"
                 android:outlineSpotShadowColor="#000000"
                 android:textColor="#836666"
-                tools:layout_editor_absoluteX="26dp"
-                tools:layout_editor_absoluteY="298dp" />
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"/>
 
             <EditText
-                android:id="@+id/editTextTextPassword"
+                android:id="@+id/textSenha"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:background="#FFE235"
@@ -66,62 +61,53 @@
                 android:hint="Digite sua senha:"
                 android:inputType="textPassword"
                 android:shadowColor="#995E4141"
-                tools:layout_editor_absoluteX="26dp"
-                tools:layout_editor_absoluteY="372dp" />
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+               />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="195dp"
-                android:layout_height="73dp"
-                android:backgroundTint="#004AAD"
-                android:text="Cadastrar"
-                android:textSize="30dp"
-                tools:layout_editor_absoluteX="90dp"
-                tools:layout_editor_absoluteY="457dp" />
+
 
             <EditText
-                android:id="@+id/editTextText"
+                android:id="@+id/textNome"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:background="#FFE235"
                 android:ems="10"
                 android:hint="Digite seu nome:"
                 android:inputType="text"
-                android:text="Digite seu nome:"
                 android:textColor="#836666"
-                tools:layout_editor_absoluteX="26dp"
-                tools:layout_editor_absoluteY="146dp" />
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="61dp"
-                android:layout_height="83dp"
-                android:src="@drawable/person"
-                tools:layout_editor_absoluteX="147dp"
-                tools:layout_editor_absoluteY="0dp" />
+
 
             <EditText
-                android:id="@+id/editTextNumber"
+                android:id="@+id/textCpf"
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:background="#FFE235"
                 android:ems="10"
                 android:hint="Digite seu CPF:"
                 android:inputType="number"
-                tools:layout_editor_absoluteX="26dp"
-                tools:layout_editor_absoluteY="223dp" />
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="306dp"
-                android:layout_height="50dp"
-                android:text="Cadastrar Funcionário"
+            <Button
+                android:id="@+id/btnCadastrar"
+                android:layout_width="195dp"
+                android:layout_height="73dp"
+                android:backgroundTint="#004AAD"
+                android:text="Cadastrar"
                 android:textSize="30dp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="34dp"
-                tools:layout_editor_absoluteY="87dp" />
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

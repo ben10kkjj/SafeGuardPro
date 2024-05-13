@@ -2,7 +2,11 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.SafeGuardPro" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="colorPrimary">#004AAD</item>
+    </style>
+
+    <style name="Theme.SafeGuardPro.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorControlNormal">@color/white</item>
     </style>
 
     <style name="Theme.SafeGuardPro" parent="Base.Theme.SafeGuardPro" />
