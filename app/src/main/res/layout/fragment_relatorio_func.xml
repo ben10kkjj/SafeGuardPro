@@ -4,15 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".view.RelatorioFuncFragment">
-
-
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="match_parent"
         app:cardBackgroundColor="#FFCB03"
         app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,115 +18,19 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="558dp">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imageWilson"
-                android:layout_width="79dp"
-                android:layout_height="83dp"
-                android:src="@drawable/person"
-              android:layout_margin="1dp"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:id="@+id/textWilson"
-                android:layout_width="157dp"
-                android:layout_height="32dp"
-                android:text="          Wilson"
-                android:textSize="20dp"
-                android:layout_margin="1dp"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:id="@+id/textCpfW"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="324.479.228-20"
-                android:textSize="20dp"
-                android:layout_margin="1dp"
-                android:layout_gravity="center" />
-            <View
-                android:id="@+id/divider8"
-                android:layout_width="369dp"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
-
-            <ImageView
-                android:id="@+id/imageRenato"
-                android:layout_width="79dp"
-                android:layout_height="83dp"
-                android:src="@drawable/person"
-                android:layout_margin="1dp"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:id="@+id/textRenato"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Renato"
-                android:textSize="20dp"
-                android:layout_margin="1dp"
-                android:layout_gravity="center" />
-
-            <TextView
-                android:id="@+id/textCpfR"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="589.390.378-20"
-                android:textSize="20dp"
-                android:layout_margin="1dp"
-                android:layout_gravity="center" />
-            <View
-                android:id="@+id/divider6"
-                android:layout_width="369dp"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider"
-                tools:layout_editor_absoluteX="1dp"
-                tools:layout_editor_absoluteY="166dp" />
-
-
-            <ImageView
-                android:id="@+id/imageMarcos"
-                android:layout_width="79dp"
-                android:layout_height="83dp"
-                android:src="@drawable/person"
-                android:layout_margin="1dp"
-                android:layout_gravity="center" />
-
-            <TextView
-                android:id="@+id/textMarcos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Marcos"
-                android:textSize="20dp"
-                android:layout_margin="1dp"
-                android:layout_gravity="center" />
-
-            <TextView
-                android:id="@+id/textCpfM"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="243.678.428-20"
-                android:textSize="20dp"
-                android:layout_margin="1dp"
-                android:layout_gravity="center" />
-
-
-
-            <View
-                android:id="@+id/divider7"
-                android:layout_width="369dp"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider"
-                tools:layout_editor_absoluteX="1dp"
-                tools:layout_editor_absoluteY="292dp" />
-
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFuncionario"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                tools:listitem="@layout/list_item_funcionario"/>
 
             <Button
                 android:id="@+id/btnAddFunc"
                 android:layout_width="156dp"
-                android:layout_height="57dp"
+                android:layout_height="wrap_content"
                 android:backgroundTint="#004AAD"
                 android:text="ADD FUNCIONARIO"
                 android:layout_margin="20dp"
