@@ -4,19 +4,28 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pira.safeguardpro.databinding.ListItemFuncionarioBinding
+import com.pira.safeguardpro.service.model.Funcionario
 
 class FuncionarioAdapter(
-    funcionarioAdapter: List<FuncionarioAdapter>,
-    private val clickListlistener: (FuncionarioAdapter) -> Unit
+    funcionarioAdapter: List<Funcionario>?,
+    private val clickListListener: (Funcionario) -> Unit
 ) :
     RecyclerView.Adapter<FuncionarioAdapter.PessoaViewHolder>() {
 
-    private var funcionarioBinding: List<FuncionarioAdapter> = arrayListOf()
+    private var funcionarioList: List<Funcionario> = arrayListOf()
 
     class PessoaViewHolder(private val binding: ListItemFuncionarioBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(funcionarioAdapter: FuncionarioAdapter, clickListlistener: (FuncionarioAdapter) -> Unit) {
+        fun bind(funcionario: Funcionario, clickListListener: (Funcionario) -> Unit) {
+//       jogar as informacoes do funcionario no item da lista
 
+            binding.textCpf.text = funcionario.cpf.toString()
+            binding.textNome.text = funcionario.nome
+
+            //Configura algum item da lista
+            binding.root.setOnClickListener{
+                clickListListener(funcionario)
+            }
         }
     }
 
@@ -27,15 +36,15 @@ class FuncionarioAdapter(
     }
 
     override fun getItemCount(): Int {
-        return funcionarioBinding.count()
+        return funcionarioList.count()
     }
 
     override fun onBindViewHolder(holder: PessoaViewHolder, position: Int) {
-        holder.bind(funcionarioBinding[position], clickListlistener)
+        holder.bind(funcionarioList[position], clickListListener)
     }
 
-    fun updateFuncionario (list: List<FuncionarioAdapter>) {
-        funcionarioBinding = list
+    fun updateFuncionario (list: List<Funcionario>) {
+        funcionarioList = list
         notifyDataSetChanged()
     }
 }

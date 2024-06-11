@@ -96,6 +96,16 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"/>
 
+            <Button
+                android:id="@+id/btnDeletar"
+                android:layout_width="195dp"
+                android:layout_height="73dp"
+                android:backgroundTint="#004AAD"
+                android:text="Deletar"
+                android:textSize="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"/>
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

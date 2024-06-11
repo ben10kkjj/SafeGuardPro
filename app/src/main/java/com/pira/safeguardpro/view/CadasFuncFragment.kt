@@ -2,32 +2,30 @@ package com.pira.safeguardpro.view
 
 import android.app.AlertDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.pira.safeguardpro.databinding.FragmentEntregaBinding
-import com.pira.safeguardpro.service.model.Emprestimo
+import com.pira.safeguardpro.databinding.FragmentCadasFuncionarioBinding
+import com.pira.safeguardpro.service.model.Epi
 import com.pira.safeguardpro.service.model.Funcionario
-import com.pira.safeguardpro.viewmodel.EmprestimoViewModel
+import com.pira.safeguardpro.viewmodel.EpiViewModel
 import com.pira.safeguardpro.viewmodel.FuncionarioViewModel
 
+class CadasFuncFragment : Fragment( ){
+    private val viewModel: FuncionarioViewModel by viewModels()
 
-class EntregaFragment : Fragment() {
-
-    private val viewModel: EmprestimoViewModel by viewModels()
-
-    private var _binding: FragmentEntregaBinding? = null
-    private val binding: FragmentEntregaBinding get() = _binding!!
+    private var _binding: FragmentCadasFuncionarioBinding? = null
+    private val binding: FragmentCadasFuncionarioBinding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentEntregaBinding.inflate(inflater, container, false)
+        _binding = FragmentCadasFuncionarioBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -36,22 +34,23 @@ class EntregaFragment : Fragment() {
 
         // Carregar a pessoa caso tenha selecionado
         arguments?.let {
-            viewModel.loadEmprestimo(it.getInt("idFuncionario"))
+            viewModel.loadFuncionario(it.getInt("idFuncionario"))
         }
 
-        binding.btnEnviarEntrega.setOnClickListener {
-            val entrega = binding.textEntrega.editableText.toString()
-            val cpf = binding.textCpfEntrega.editableText.toString().toInt()
-            val epi = binding.textEpi.editableText.toString()
+        binding.btnCadastrar.setOnClickListener {
+            val nome = binding.textNome.editableText.toString()
+            val cpf = binding.textCpf.editableText.toString().toInt()
+            val email = binding.textEmail.editableText.toString()
+            val senha = binding.textSenha.editableText.toString()
 
 
+            if (nome != "" && cpf != 0 &&  email != "" && senha != "") {
 
-            if (entrega != "" && cpf != 0 &&  epi != "" ) {
-
-                val emprestimo: Emprestimo(
-                    entrega = entrega,
+                val funcionario = Funcionario(
+                    nome = nome,
                     cpf = cpf,
-                    epi = epi,
+                    email = email,
+                    senha = senha
                 )
 
                 viewModel.funcionario.value?.let {
@@ -73,6 +72,19 @@ class EntregaFragment : Fragment() {
             }
 
         }
+
+        binding.btnDeletar.setOnClickListener {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Exclusão  de funcionario")
+                .setMessage("Você realmente deseja excluir?")
+                .setPositiveButton("Sim") { _, _ ->
+                    viewModel.delete(viewModel.funcionario.value?.id ?: 0)
+                    findNavController().navigateUp()
+                }
+                .setNegativeButton("Não") { _, _ -> }
+                .show()
+        }
+
 
         viewModel.funcionario.observe(viewLifecycleOwner) { funcionario ->
             binding.textSenha.setText(funcionario.senha)

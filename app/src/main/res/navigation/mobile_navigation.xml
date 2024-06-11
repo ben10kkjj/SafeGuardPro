@@ -35,6 +35,18 @@
         android:name="com.pira.safeguardpro.view.LoginFragment"
         android:label="fragment_cadas_epi"
         tools:layout="@layout/fragment_cadas_epi" />
+    <fragment
+        android:id="@+id/cadasEpiFragment"
+        android:name="com.pira.safeguardpro.view.CadasEpiFragment"
+        android:label="CadasEpiFragment" />
+    <fragment
+        android:id="@+id/cadasFuncFragment"
+        android:name="com.pira.safeguardpro.view.CadasFuncFragment"
+        android:label="CadasFuncFragment" />
+    <fragment
+        android:id="@+id/relatorioEntregaFragment"
+        android:name="com.pira.safeguardpro.view.RelatorioEntregaFragment"
+        android:label="RelatorioEntregaFragment" />
 
 
 </navigation>
