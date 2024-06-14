@@ -36,23 +36,11 @@
                />
 
             <Button
-                android:id="@+id/btnNotaFiscal"
+                android:id="@+id/btnEntregas"
                 android:layout_width="180dp"
                 android:layout_height="70dp"
                 android:backgroundTint="#004AAD"
-                android:text="Nota Fiscal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="484dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="80dp"/>
-
-            <Button
-                android:id="@+id/btnEntrega"
-                android:layout_width="180dp"
-                android:layout_height="70dp"
-                android:backgroundTint="#004AAD"
-                android:text="Entrega"
+                android:text="Relatório Entrega"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteY="348dp"

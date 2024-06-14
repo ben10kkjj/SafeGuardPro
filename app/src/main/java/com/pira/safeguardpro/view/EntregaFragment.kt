@@ -1,6 +1,5 @@
 package com.pira.safeguardpro.view
 
-import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,14 +10,22 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.pira.safeguardpro.databinding.FragmentEntregaBinding
 import com.pira.safeguardpro.service.model.Emprestimo
+import com.pira.safeguardpro.service.model.Epi
 import com.pira.safeguardpro.service.model.Funcionario
 import com.pira.safeguardpro.viewmodel.EmprestimoViewModel
+import com.pira.safeguardpro.viewmodel.EpiViewModel
 import com.pira.safeguardpro.viewmodel.FuncionarioViewModel
+import java.time.LocalDateTime
 
 
 class EntregaFragment : Fragment() {
 
     private val viewModel: EmprestimoViewModel by viewModels()
+    private val viewModelFuncionario: FuncionarioViewModel by viewModels()
+    private val viewModelEpi: EpiViewModel by viewModels()
+
+    private lateinit var epiByCa: Epi
+    private lateinit var funcionarioByCpf: Funcionario
 
     private var _binding: FragmentEntregaBinding? = null
     private val binding: FragmentEntregaBinding get() = _binding!!
@@ -26,7 +33,7 @@ class EntregaFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentEntregaBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -36,50 +43,50 @@ class EntregaFragment : Fragment() {
 
         // Carregar a pessoa caso tenha selecionado
         arguments?.let {
-            viewModel.loadEmprestimo(it.getInt("idFuncionario"))
+            viewModel.loadEmprestimo(it.getInt("idEntrega"))
         }
 
         binding.btnEnviarEntrega.setOnClickListener {
-            val entrega = binding.textEntrega.editableText.toString()
             val cpf = binding.textCpfEntrega.editableText.toString().toInt()
             val epi = binding.textEpi.editableText.toString()
+            val data_entrega = LocalDateTime.now().toLocalDate().toString()
 
+            if (cpf != 0 &&  epi != "" ) {
 
-
-            if (entrega != "" && cpf != 0 &&  epi != "" ) {
-
-                val emprestimo: Emprestimo(
-                    entrega = entrega,
-                    cpf = cpf,
-                    epi = epi,
+                val emprestimo = Emprestimo(
+                    codigo_funcionario = cpf,
+                    numero_ca = epiByCa.numero_ca,
+                    nome_epi = epiByCa.nome_equipamento,
+                    data_entrega = data_entrega
                 )
 
-                viewModel.funcionario.value?.let {
-                    funcionario.id = it.id
-                    viewModel.update(funcionario)
+                viewModel.emprestimo.value?.let {
+                    emprestimo.id = it.id
+                    viewModel.update(emprestimo)
 
                 } ?: run {
-                    viewModel.insert(funcionario)
+                    viewModel.insert(emprestimo)
                 }
 
-                binding.textCpf.editableText.clear()
-                binding.textEmail.editableText.clear()
-                binding.textNome.editableText.clear()
-                binding.textSenha.editableText.clear()
-
+                binding.textCpfEntrega.editableText.clear()
+                binding.textEpi.editableText.clear()
                 findNavController().navigateUp()
             } else {
                 Toast.makeText(requireContext(), "Digite os dados", Toast.LENGTH_LONG).show()
             }
-
         }
 
-        viewModel.funcionario.observe(viewLifecycleOwner) { funcionario ->
-            binding.textSenha.setText(funcionario.senha)
-            binding.textEmail.setText(funcionario.email)
-            binding.textNome.setText(funcionario.nome)
-            binding.textCpf.setText(funcionario.cpf)
+        viewModel.emprestimo.observe(viewLifecycleOwner) {
+        }
+
+        viewModelEpi.epi.observe(viewLifecycleOwner) {
+            epiByCa = it
+            binding.textEpi.setText(it.nome_equipamento)
+        }
+
+        viewModelFuncionario.funcionario.observe(viewLifecycleOwner) {
+            funcionarioByCpf = it
+            binding.textCpfEntrega.setText(it.cpf)
         }
     }
 }
-

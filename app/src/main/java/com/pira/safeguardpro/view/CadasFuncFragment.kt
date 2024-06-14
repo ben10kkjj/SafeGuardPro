@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.pira.safeguardpro.databinding.FragmentCadasFuncionarioBinding
 import com.pira.safeguardpro.service.model.Epi
 import com.pira.safeguardpro.service.model.Funcionario
+import com.pira.safeguardpro.service.model.Login
 import com.pira.safeguardpro.viewmodel.EpiViewModel
 import com.pira.safeguardpro.viewmodel.FuncionarioViewModel
 
@@ -24,7 +25,7 @@ class CadasFuncFragment : Fragment( ){
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentCadasFuncionarioBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -42,6 +43,7 @@ class CadasFuncFragment : Fragment( ){
             val cpf = binding.textCpf.editableText.toString().toInt()
             val email = binding.textEmail.editableText.toString()
             val senha = binding.textSenha.editableText.toString()
+            val admin = binding.chkAdmin.isChecked
 
 
             if (nome != "" && cpf != 0 &&  email != "" && senha != "") {
@@ -50,13 +52,13 @@ class CadasFuncFragment : Fragment( ){
                     nome = nome,
                     cpf = cpf,
                     email = email,
-                    senha = senha
+                    senha = senha,
+                     admin = admin
                 )
 
                 viewModel.funcionario.value?.let {
                     funcionario.id = it.id
                     viewModel.update(funcionario)
-
                 } ?: run {
                     viewModel.insert(funcionario)
                 }
@@ -65,12 +67,12 @@ class CadasFuncFragment : Fragment( ){
                 binding.textEmail.editableText.clear()
                 binding.textNome.editableText.clear()
                 binding.textSenha.editableText.clear()
+                binding.chkAdmin.isChecked = false
 
                 findNavController().navigateUp()
             } else {
                 Toast.makeText(requireContext(), "Digite os dados", Toast.LENGTH_LONG).show()
             }
-
         }
 
         binding.btnDeletar.setOnClickListener {
@@ -91,7 +93,19 @@ class CadasFuncFragment : Fragment( ){
             binding.textEmail.setText(funcionario.email)
             binding.textNome.setText(funcionario.nome)
             binding.textCpf.setText(funcionario.cpf)
+
+            if (Login.userAdmin) {
+                binding.btnDeletar.visibility = View.VISIBLE
+            } else {
+                binding.textSenha.isClickable = false
+                binding.textEmail.isClickable = false
+                binding.textNome.isClickable = false
+                binding.textCpf.isClickable = false
+
+                binding.btnCadastrar.visibility = View.GONE
+                binding.textSenha.visibility = View.GONE
+                binding.chkAdmin.visibility = View.GONE
+            }
         }
     }
 }
-

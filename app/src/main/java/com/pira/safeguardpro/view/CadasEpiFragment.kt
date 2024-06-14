@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.pira.safeguardpro.databinding.FragmentCadasEpiBinding
 import com.pira.safeguardpro.service.model.Epi
+import com.pira.safeguardpro.service.model.Login
 import com.pira.safeguardpro.viewmodel.EpiViewModel
 
 
@@ -39,15 +40,15 @@ class CadasEpiFragment : Fragment() {
 
         binding.btnCadastro.setOnClickListener {
             val ca = binding.edtCa.editableText.toString().toInt()
-            val epi = binding.edtEpi.editableText.toString()
+            val nomeEpi = binding.edtEpi.editableText.toString()
             val validade = binding.edtDateValidade.editableText.toString().toInt()
             val vencimento = binding.edtDateVencimento.editableText.toString()
 
 
-            if (ca != 0 && epi != "" &&  validade != 0 && vencimento != "") {
+            if (ca != 0 && nomeEpi != "" &&  validade != 0 && vencimento != "") {
 
                 val epi = Epi(
-                    nome_equipamento = epi,
+                    nome_equipamento = nomeEpi,
                     numero_ca = ca,
                     tempo_uso = validade,
                     data_vencimento = vencimento
@@ -56,7 +57,6 @@ class CadasEpiFragment : Fragment() {
                 viewModel.epi.value?.let {
                     epi.id = it.id
                     viewModel.update(epi)
-
                 } ?: run {
                     viewModel.insert(epi)
                 }
@@ -70,7 +70,6 @@ class CadasEpiFragment : Fragment() {
             } else {
                 Toast.makeText(requireContext(), "Digite os dados", Toast.LENGTH_LONG).show()
             }
-
         }
 
         binding.btnDeletar.setOnClickListener {
@@ -85,12 +84,22 @@ class CadasEpiFragment : Fragment() {
                 .show()
         }
 
-
         viewModel.epi.observe(viewLifecycleOwner) { epi ->
             binding.edtCa.setText(epi.numero_ca)
             binding.edtEpi.setText(epi.nome_equipamento)
             binding.edtDateValidade.setText(epi.tempo_uso)
             binding.edtDateVencimento.setText(epi.data_vencimento)
+
+            if (Login.userAdmin) {
+                binding.btnDeletar.visibility = View.VISIBLE
+            } else {
+                binding.edtCa.isClickable = false
+                binding.edtEpi.isClickable = false
+                binding.edtDateValidade.isClickable = false
+                binding.edtDateVencimento.isClickable = false
+
+                binding.btnCadastro.visibility = View.GONE
+            }
         }
     }
 }

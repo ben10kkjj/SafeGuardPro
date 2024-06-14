@@ -18,6 +18,9 @@ interface FuncionarioService {
     @GET("get_funcionario/{funcionario_id}")
     suspend fun getFuncionarioById(@Path("funcionario_id") id: Int): Response<List<Funcionario>>
 
+    @GET("get_funcionario/{funcionario_id}")
+    suspend fun getFuncionarioByCpf(@Path("funcionario_cpf") cpf: Int): Response<List<Funcionario>>
+
     @Multipart
     @POST("add_funcionario")
     suspend fun createFuncionario(
@@ -25,6 +28,7 @@ interface FuncionarioService {
         @Part("email") email: RequestBody,
         @Part("cpf") cpf: RequestBody,
         @Part("senha") senha: RequestBody,
+        @Part("admin") admin: RequestBody,
     ): Response<Funcionario>
 
     @Multipart
@@ -35,6 +39,7 @@ interface FuncionarioService {
         @Part("email") email: RequestBody,
         @Part("cpf") cpf: RequestBody,
         @Part("senha") senha: RequestBody,
+        @Part("admin") admin: RequestBody,
     ): Response<Funcionario>
 
     @DELETE("delete_funcionario/{funcionario_id}")

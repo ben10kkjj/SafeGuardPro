@@ -19,10 +19,8 @@ class EmprestimoRepository(context: Context) {
     suspend fun insertEmprestimo(emprestimo: Emprestimo): Emprestimo {
         return mRemote.createEmprestimo(
             nome_epi = emprestimo.nome_epi.toRequestBody("text/plain".toMediaTypeOrNull()),
-            codigo_funcionario = emprestimo.codigo_funcionario.toString()
-                .toRequestBody("text/plain".toMediaTypeOrNull()),
-            numero_ca = emprestimo.numero_ca.toString()
-                .toRequestBody("text/plain".toMediaTypeOrNull()),
+            codigo_funcionario = emprestimo.codigo_funcionario.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
+            numero_ca = emprestimo.numero_ca.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
         ).body() ?: emprestimoEmpty
     }
 

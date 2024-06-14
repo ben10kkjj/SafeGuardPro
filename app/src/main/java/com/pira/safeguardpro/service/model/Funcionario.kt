@@ -5,5 +5,6 @@ data class Funcionario(
     var nome: String = "",
     var cpf: Int = 0,
     var email: String = "",
-    var senha: String = ""
+    var senha: String = "",
+    var admin: Boolean = false,
 )

@@ -16,7 +16,7 @@ class FuncionarioRepository(context: Context) {
         return mRemote.getFuncionarios()
     }
 
-    private val funcionarioEmpty = Funcionario(0, " ", 0, " ", "")
+    private val funcionarioEmpty = Funcionario(0, " ", 0, " ", "", false)
 
     suspend fun insertFuncionario(funcionario: Funcionario): Funcionario {
         return mRemote.createFuncionario(
@@ -24,11 +24,21 @@ class FuncionarioRepository(context: Context) {
             email = funcionario.email.toRequestBody("text/plain".toMediaTypeOrNull()),
             cpf = funcionario.cpf.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
             senha = funcionario.senha.toRequestBody("text/plain".toMediaTypeOrNull()),
+            admin = funcionario.admin.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
         ).body() ?: funcionarioEmpty
     }
 
     suspend fun getFuncionario(id: Int): Funcionario {
         val response = mRemote.getFuncionarioById(id)
+        return if (response.isSuccessful) {
+            response.body()?.first() ?: funcionarioEmpty
+        } else {
+            funcionarioEmpty
+        }
+    }
+
+    suspend fun getFuncionarioByCpf(cpf: Int): Funcionario {
+        val response = mRemote.getFuncionarioByCpf(cpf)
         return if (response.isSuccessful) {
             response.body()?.first() ?: funcionarioEmpty
         } else {
@@ -42,6 +52,7 @@ class FuncionarioRepository(context: Context) {
             email = funcionario.email.toRequestBody("text/plain".toMediaTypeOrNull()),
             cpf = funcionario.cpf.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
             senha = funcionario.senha.toRequestBody("text/plain".toMediaTypeOrNull()),
+            admin = funcionario.admin.toString().toRequestBody("text/plain".toMediaTypeOrNull()),
             id = funcionario.id
         ).body() ?: funcionarioEmpty
     }

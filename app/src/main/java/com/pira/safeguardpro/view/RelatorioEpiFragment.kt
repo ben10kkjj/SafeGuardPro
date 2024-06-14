@@ -13,14 +13,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.pira.safeguardpro.R
 import com.pira.safeguardpro.view.adapter.EpiAdapter
 import com.pira.safeguardpro.databinding.FragmentRelatorioEpiBinding
+import com.pira.safeguardpro.service.model.Epi
+import com.pira.safeguardpro.service.model.Login
+import com.pira.safeguardpro.viewmodel.EmprestimoViewModel
 import com.pira.safeguardpro.viewmodel.EpiViewModel
 
 
 class RelatorioEpiFragment : Fragment() {
 
     private val viewModel: EpiViewModel by viewModels()
+    private val viewModelEmprestimo: EmprestimoViewModel by viewModels()
 
     private lateinit var adapter: EpiAdapter
+
+    private val episFuncionario = mutableListOf<Epi>()
 
     private var _binding: FragmentRelatorioEpiBinding? = null
     private val binding: FragmentRelatorioEpiBinding get() = _binding!!
@@ -49,9 +55,26 @@ class RelatorioEpiFragment : Fragment() {
         recycler.layoutManager = LinearLayoutManager(requireContext())
         recycler.adapter = adapter
 
-
         viewModel.epiList.observe(viewLifecycleOwner) {
             adapter.updateEpis(it)
+        }
+
+        viewModel.epi.observe(viewLifecycleOwner) { epi ->
+            episFuncionario.add(epi)
+//            TODO testar aqui ou na linha 75
+            adapter.updateEpis(episFuncionario)
+        }
+
+        viewModelEmprestimo.emprestimoList.observe(viewLifecycleOwner) { listEntregas ->
+            val entregasFuncionario = listEntregas.filter { it.codigo_funcionario == Login.userId }
+
+            entregasFuncionario.forEach {
+                viewModel.loadEpiByCa(it.numero_ca)
+            }
+
+//            TODO testar aqui ou na linha 64
+            adapter.updateEpis(episFuncionario)
+            Toast.makeText(requireContext(), "Epis: $listEntregas", Toast.LENGTH_LONG).show()
         }
 
         viewModel.erro.observe(viewLifecycleOwner) {
@@ -63,7 +86,11 @@ class RelatorioEpiFragment : Fragment() {
             findNavController().navigate(R.id.relatorioEpiFragment)
         }
 
-        // Carregar as pessoas cadastradas
-        viewModel.load()
+        if (Login.userAdmin){
+            // Carregar as pessoas cadastradas
+            viewModel.load()
+        } else {
+            viewModelEmprestimo.load()
+        }
     }
 }
