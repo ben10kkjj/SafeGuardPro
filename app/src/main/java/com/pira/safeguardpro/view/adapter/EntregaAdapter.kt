@@ -1,4 +1,4 @@
-package com.pira.safeguardpro.view.Adapter
+package com.pira.safeguardpro.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -12,11 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pira.safeguardpro.R
 import com.pira.safeguardpro.databinding.FragmentRelatorioEntregaBinding
-import com.pira.safeguardpro.view.Adapter.EntregaAdapter
-import com.pira.safeguardpro.view.Adapter.FuncionarioAdapter
-import com.pira.safeguardpro.view.adapter.EpiAdapter
+import com.pira.safeguardpro.view.adapter.EntregaAdapter
 import com.pira.safeguardpro.viewmodel.EmprestimoViewModel
-import com.pira.safeguardpro.viewmodel.EpiViewModel
 
 class RelatorioEntregaFragment: Fragment(){
 

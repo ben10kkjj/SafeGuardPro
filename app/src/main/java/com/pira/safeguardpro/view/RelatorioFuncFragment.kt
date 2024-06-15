@@ -12,8 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pira.safeguardpro.R
 import com.pira.safeguardpro.databinding.FragmentRelatorioFuncBinding
-import com.pira.safeguardpro.view.Adapter.FuncionarioAdapter
-import com.pira.safeguardpro.viewmodel.EpiViewModel
+import com.pira.safeguardpro.view.adapter.FuncionarioAdapter
 import com.pira.safeguardpro.viewmodel.FuncionarioViewModel
 
 
